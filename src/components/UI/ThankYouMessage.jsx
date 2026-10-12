@@ -1,6 +1,8 @@
-export default function ThankYouMessage() {
+export default function ThankYouMessage({ classes }) {
   return (
-    <div className="sm:mx-auto sm:w-full sm:max-w-md flex flex-col justify-center">
+    <div
+      className={`sm:mx-auto sm:w-full sm:max-w-md flex flex-col justify-center ${classes} my-30`}
+    >
       {/* <!-- Container di Ringraziamento --> */}
       <div className="bg-white py-10 px-6 shadow-xl rounded-2xl border border-gray-100 sm:px-10 text-center space-y-6 max-w-md mx-auto transform transition-all duration-300 scale-100">
         {/* <!-- Icona di Successo con cerchio sfumato --> */}

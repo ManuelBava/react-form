@@ -1,13 +1,25 @@
+import { useState } from "react";
 import InputContent from "../UI/InputContent";
 import ThankYouMessage from "../UI/ThankYouMessage";
 
 export default function SignUpNewsLetter() {
   //  gestisci l'iscrizione alla newsletter nascondendo il form e mostrando
   //   un messaggio di ringraziamento dopo l'invio
+  const [visibilityForm, setVisibilityForm] = useState("block");
+  const [visibilitySuccessMessage, setVisibilitySuccessMessage] =
+    useState("hidden");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setVisibilityForm("hidden");
+    setVisibilitySuccessMessage("block");
+  }
   return (
     <section className="my-3">
       <h2 className="text-3xl font-bold">Sign Up NewsLetter</h2>
-      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-6 sm:px-6 lg:px-8">
+      <div
+        className={`min-h-screen bg-gray-50 flex flex-col justify-center py-6 sm:px-6 lg:px-8 ${visibilityForm}`}
+      >
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           {/* <!-- Contenitore Form --> */}
           <div className="bg-white py-5 px-6 shadow-xl rounded-2xl border border-gray-100 sm:px-10 space-y-2">
@@ -17,7 +29,7 @@ export default function SignUpNewsLetter() {
               </h2>
             </div>
 
-            <form className="space-y-5" onSubmit={""}>
+            <form className="space-y-5" onSubmit={handleSubmit}>
               {/* <!-- Campo Name --> */}
               <InputContent
                 htmlFor="name"
@@ -46,10 +58,7 @@ export default function SignUpNewsLetter() {
 
               {/* <!-- Pulsante di Invio --> */}
               <div className="flex justify-center">
-                <button
-                  onClick={""}
-                  className="w-40 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition duration-200 ease-in-out hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 active:scale-[0.98]"
-                >
+                <button className="w-40 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition duration-200 ease-in-out hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 active:scale-[0.98]">
                   Sign in
                 </button>
               </div>
@@ -57,7 +66,7 @@ export default function SignUpNewsLetter() {
           </div>
         </div>
       </div>
-      <ThankYouMessage />
+      <ThankYouMessage classes={`${visibilitySuccessMessage}`} />
     </section>
   );
 }
