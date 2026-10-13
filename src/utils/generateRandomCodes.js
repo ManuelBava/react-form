@@ -1,11 +1,23 @@
-export function generateRandomCode(length = 8) {
+export function generateRandomCode(lunghezzaCaratteriCasuali = 8) {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let code = "";
-  for (let i = 0; i < length; i++) {
-    const idx = Math.floor(Math.random() * chars.length);
-    code += chars[idx];
+  if (lunghezzaCaratteriCasuali < 5) lunghezzaCaratteriCasuali = 5;
+
+  let codiceFinale = "";
+
+  // 2. Generiamo la prima parte alfabetica del codice random (caratteri casuali)
+  for (let i = 0; i < lunghezzaCaratteriCasuali; i++) {
+    //generiamo numeri casuali, tanti quanti la lunghezza dell'alfabeto, -10 per rimuoverne i numeri dall'estrazione casuale
+    const indiceCasuale = Math.floor(Math.random() * (chars.length - 10));
+    codiceFinale += chars[indiceCasuale];
   }
-  return code;
+
+  // 3. Generiamo gli ultimi due caratteri (un numero da 00 a 99)
+  const numeroCasuale = Math.floor(Math.random() * 100); // Genera da 0 a 99
+
+  // Lo trasforma in stringa e mette lo zero davanti se è a una sola cifra
+  codiceFinale += numeroCasuale.toString().padStart(2, "0");
+
+  return codiceFinale;
 }
 
 /**
