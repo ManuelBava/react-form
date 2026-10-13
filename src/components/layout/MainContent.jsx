@@ -1,8 +1,7 @@
+import PromoCodeContent from "../sections/PromoCodeContent";
 import SignUpNewsLetter from "../sections/SignUpNewsLetter";
 
 export default function MainContent() {
-  // valida un codice promozionale inserito dall'utente mostrando lo sconto applicato o segnalando l'invalidità del codice
-
   // raccogli il feedback dell'utente tramite un voto numerico (radio button) e un commento testuale fornendo una risposta personalizzata in base al punteggio ottenuto
 
   // calcola il preventivo moltiplicando ore e tariffa oraria, aggiungendo automaticamente un extra al totale se viene superata una certa soglia lavorativa
@@ -12,7 +11,8 @@ export default function MainContent() {
   // crea una rubrica telefonica consentendo l'inserimento di nuovi nominativi e la loro eliminazione
   return (
     <main className="container mx-auto px-4 text-center my-5">
-      <SignUpNewsLetter />
+      {/* <SignUpNewsLetter /> */}
+      <PromoCodeContent />
     </main>
   );
 }
