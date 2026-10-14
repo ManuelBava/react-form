@@ -3,6 +3,7 @@ export default function FormContent({
   buttonTitle,
   children,
   onSubmit,
+  clicked,
   visibilityButton, // booleano: true = attivo, false = disabled
 }) {
   return (
@@ -21,6 +22,7 @@ export default function FormContent({
           {/* <!-- Pulsante di Invio --> */}
           <div className="flex justify-center">
             <button
+              onClick={clicked}
               disabled={!visibilityButton}
               className={`
                 w-40 rounded-xl bg-indigo-600 px-4 py-2.5
